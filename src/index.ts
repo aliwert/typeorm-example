@@ -1,5 +1,7 @@
 import { createConnection } from "typeorm";
 import { Client } from "./entities/Client";
+import { Banker } from "./entities/Banker";
+import { Transaction } from "./entities/Transaction";
 
 const main = async () => {
   try {
@@ -10,8 +12,9 @@ const main = async () => {
       username: "postgres",
       password: "585858",
       database: "typeorm",
-      entities: [Client],
+      entities: [Client, Banker, Transaction],
       synchronize: true,
+      // logging: ["query", "schema"],
     });
     console.log("Connected to Postgres");
   } catch (error) {
