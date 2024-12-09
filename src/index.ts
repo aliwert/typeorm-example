@@ -1,18 +1,22 @@
 import { createConnection } from "typeorm";
+import { Client } from "./entities/Client";
 
 const main = async () => {
   try {
-    const connection = await createConnection({
+    await createConnection({
       type: "postgres",
       host: "localhost",
       port: 5432,
       username: "postgres",
       password: "585858",
       database: "typeorm",
+      entities: [Client],
+      synchronize: true,
     });
     console.log("Connected to Postgres");
   } catch (error) {
-    console.log("Error: ", error);
+    console.error(error);
+    throw new Error("Error connecting to Postgres");
   }
 };
 
