@@ -1,27 +1,15 @@
-import {
-  Entity,
-  BaseEntity,
-  Column,
-  PrimaryColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 
 @Entity()
 export class Person extends BaseEntity {
-  @PrimaryColumn({
-    type: "uuid",
-  })
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  firstName: string;
+  first_name: string;
 
   @Column()
-  middle_name: string;
-
-  @Column()
-  lastName: string;
+  last_name: string;
 
   @Column({
     unique: true,
@@ -33,9 +21,4 @@ export class Person extends BaseEntity {
     length: 10,
   })
   card_number: string;
-
-  @Column({
-    type: "numeric",
-  })
-  balance: number;
 }
